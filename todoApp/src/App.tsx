@@ -55,7 +55,8 @@ function App() {
                 checked={done}
                 onClick={(e) => {
                   const newTodoList = [...todoList];
-                  newTodoList[index].done = e.target?.checked;
+                  const eventTarget = e.target as HTMLInputElement;
+                  newTodoList[index].done = eventTarget.checked;
                   setTodoList(newTodoList);
                   console.log(todoList);
                 }}
