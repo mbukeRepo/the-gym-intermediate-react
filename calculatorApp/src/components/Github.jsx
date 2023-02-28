@@ -1,12 +1,13 @@
 import React from "react";
-import Logo from "./img/logo.png";
-import "./Github.css";
 
 export default function Github() {
   return (
-    <footer>
-      <h1>
-        Created with ❤️ by <a href="https://github.com/mbukerepo">@MbukeRepo</a>
+    <footer className="footer">
+      <h1 className="footer__title">
+        Created with ❤️ by{" "}
+        <a className="footer__link" href="https://github.com/mbukerepo">
+          @MbukeRepo
+        </a>
       </h1>
     </footer>
   );

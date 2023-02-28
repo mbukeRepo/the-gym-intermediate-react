@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Github from "./Github";
-import "./Calculator.css";
 
 export default function Calculator() {
   const [acc, setAcc] = useState("");
@@ -39,6 +38,8 @@ export default function Calculator() {
     let result = String(acc + total)
       .replace("÷", "/")
       .replace("x", "*");
+
+    if (isNaN(result[result.length - 2])) return;
     result = String(eval(result)).substring(0, 9);
     setTotal(result);
     setAcc("");
@@ -50,22 +51,24 @@ export default function Calculator() {
         <div className="acc">{acc}</div>
         <div className="total">{total}</div>
       </div>
-      <div className="container">
+      <div className="flex flex-wrap w-[320px]">
         <input
           type="button"
-          className="button action"
-          value="C"
-          onClick={() => setTotal("")}
-        />
-        <input
-          type="button"
-          className="button action"
-          value="CE"
+          className="button action !bg-gray-100"
+          value="AC"
           onClick={() => ClearAll()}
         />
         <input
           type="button"
-          className="button action"
+          className="button action !bg-gray-100"
+          value="-/+"
+          onClick={() => {
+            setTotal(total * -1 + "");
+          }}
+        />
+        <input
+          type="button"
+          className="button action !bg-gray-100"
           value="%"
           onClick={() => AddAction("%")}
         />
