@@ -1,9 +1,8 @@
 import { useRef, useState } from "react";
+import useTodos from "./hooks/useLocalStorage";
 
 function App() {
-  const [todoList, setTodoList] = useState([
-    { title: "cleaning the house", done: false },
-  ]);
+  const [todoList, setTodoList] = useTodos();
 
   const todoRef = useRef<any>();
 
@@ -11,19 +10,19 @@ function App() {
     event.preventDefault();
     const title = todoRef.current.value;
     if (title === "") return;
-    setTodoList((prev) => [...prev, { title, done: false }]);
+    setTodoList((prev: any) => [...prev, { title, done: false }]);
     todoRef.current.value = "";
   };
 
   return (
-    <div className="w-full min-h-screen text-gray-700 h-full grid place-content-center">
-      <div>
+    <div className="w-full flex flex-col items-center h-screen text-gray-700">
+      <div className="flex flex-col mt-32 items-center w-full justify-center">
         <h3 className="text-center mb-6 text-4xl font-bold text-gray-400">
           todos
         </h3>
         <form
           action=""
-          className="flex rounded-3xl items-center shadow-md py-2 px-4 bg-gray-100"
+          className="flex w-[18.3rem] rounded-3xl items-center shadow-md py-2 px-4 bg-gray-100"
           style={{ display: "flex" }}
           onSubmit={handleClick}
         >
@@ -41,15 +40,14 @@ function App() {
           </div>
         </form>
       </div>
-
       <ul className="mt-10 flex flex-col gap-3">
-        {todoList.map(({ title, done }, index) => (
+        {todoList.map(({ title, done }: any, index: any) => (
           <li
-            className="flex justify-between items-center py-2 px-3 bg-gray-100"
+            className="flex justify-between items-start py-2 px-3 bg-gray-100"
             key={index}
           >
             {" "}
-            <span className="flex items-center gap-1">
+            <div className="flex items-baseline gap-1 w-[23rem]">
               <input
                 type="checkbox"
                 checked={done}
@@ -61,8 +59,10 @@ function App() {
                   console.log(todoList);
                 }}
               />
-              <span className={done ? `line-through` : ""}>{title}</span>
-            </span>
+              <p className={`${done ? `line-through` : ""} inline- w-[23rem]`}>
+                {title}
+              </p>
+            </div>
             <span
               onClick={() => {
                 const newTodoList = [...todoList];
