@@ -10,7 +10,10 @@ export default function Calculator() {
     setAcc("");
   };
   const AddNumber = (num) => {
-    if (total.length <= 8) {
+    if (total === "0") {
+      setTotal(num);
+    }
+    if (total.length <= 8 && total !== "0") {
       setTotal(total + num);
     }
   };
