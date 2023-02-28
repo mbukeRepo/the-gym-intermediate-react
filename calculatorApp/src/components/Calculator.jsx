@@ -18,7 +18,7 @@ export default function Calculator() {
     }
   };
   const AddAction = (sinal) => {
-    if (total === "") {
+    if (total === "" || eval(total) === 0) {
       return;
     } else if (total.split("")[total.length - 1] === ".") {
       setAcc(acc + total + "0" + ` ${sinal} `);
@@ -31,7 +31,10 @@ export default function Calculator() {
   const AddDot = () => {
     if (total.length === 0) {
       setTotal("0.");
-    } else if (total.split("")[total.length - 1] === ".") {
+    } else if (
+      total.split("")[total.length - 1] === "." ||
+      total.includes(".")
+    ) {
       return;
     } else {
       setTotal(total + ".");
