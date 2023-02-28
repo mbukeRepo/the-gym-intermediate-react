@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Github from "./Github";
 
-export default function Calculator() {
+const Calculator = () => {
   const [acc, setAcc] = useState("");
   const [total, setTotal] = useState("");
 
@@ -179,4 +179,5 @@ export default function Calculator() {
       <Github />
     </div>
   );
-}
+};
+export default Calculator;

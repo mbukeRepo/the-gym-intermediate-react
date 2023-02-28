@@ -1,6 +1,4 @@
-import React from "react";
-
-export default function Github() {
+const Github = () => {
   return (
     <footer className="footer">
       <h1 className="footer__title">
@@ -11,4 +9,5 @@ export default function Github() {
       </h1>
     </footer>
   );
-}
+};
+export default Github;
