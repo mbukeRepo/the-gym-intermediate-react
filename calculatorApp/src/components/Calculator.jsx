@@ -2,12 +2,12 @@ import { useState } from "react";
 import Github from "./Github";
 
 const Calculator = () => {
-  const [acc, setAcc] = useState("");
+  const [value, setValue] = useState("");
   const [total, setTotal] = useState("");
 
   const ClearAll = () => {
     setTotal("");
-    setAcc("");
+    setValue("");
   };
   const AddNumber = (num) => {
     if (total === "0") {
@@ -21,10 +21,10 @@ const Calculator = () => {
     if (total === "" || eval(total) === 0) {
       return;
     } else if (total.split("")[total.length - 1] === ".") {
-      setAcc(acc + total + "0" + ` ${sinal} `);
+      setValue(value + total + "0" + ` ${sinal} `);
       setTotal("");
     } else {
-      setAcc(acc + total + ` ${sinal} `);
+      setValue(value + total + ` ${sinal} `);
       setTotal("");
     }
   };
@@ -41,20 +41,20 @@ const Calculator = () => {
     }
   };
   const Result = () => {
-    let result = String(acc + total)
+    let result = String(value + total)
       .replace("÷", "/")
       .replace("x", "*");
 
     if (isNaN(result[result.length - 2])) return;
     result = String(eval(result)).substring(0, 9);
     setTotal(result);
-    setAcc("");
+    setValue("");
   };
 
   return (
     <div style={{ padding: "auto 2.3rem" }} className="calculator">
       <div className="visor">
-        <div className="acc">{acc}</div>
+        <div className="acc">{value}</div>
         <div className="total">{total}</div>
       </div>
       <div className="flex flex-wrap w-[320px]">
