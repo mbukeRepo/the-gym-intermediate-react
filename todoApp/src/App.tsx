@@ -59,7 +59,7 @@ function App() {
                   console.log(todoList);
                 }}
               />
-              <p className={`${done ? `line-through` : ""} inline- w-[23rem]`}>
+              <p className={`${done ? "line-through" : ""} inline- w-[23rem]`}>
                 {title}
               </p>
             </div>
